@@ -1,0 +1,16 @@
+red:
+  build: .
+  ports:
+    - "1880:1880"
+  volumes:
+    - ./node-red-data:/data
+    - ./public:/home/nol/node-red-static
+  links:
+    - mongodb
+mongodb:
+  ports:
+    - "27017:27017"
+  image: mongo
+  volumes:
+    - ./mongo-data/conf/mongod.conf:/etc/mongod.conf
+    - ./mongo-data/data/db:/data/db
